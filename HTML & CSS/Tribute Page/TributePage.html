@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/iconoMac.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+
+        var items;
+        var spanClass;
+        var classActive;
+        var lastPoint;
+        var firstPoint;
+        var firstEvent;
+        var TitleEvents=[
+            "Steve Jobs' Birth",
+            "Jobs Family Moved to Mountain View",
+            "Job at HP",
+            "Met Steve Wozniak",
+            "Blue Boxes",
+            "Reed College",
+            "Apple I",
+            "Apple II",
+            "Apple Goes Public",
+            "Macintosh Introduced",
+            "NeXT Founded",
+            "Pixar",
+            "Entrepreneur of the Decade",
+            "Pixar Signed Deal with Disney",
+            "Apple Purchased NeXT",
+            "Release of the first iPod",
+            "Diagnosed with Pancreatic Cancer(Fall 2003)",
+            "The iPhone",
+            "Liver Transplant",
+            "Release of iPad and iPhone 4",
+            "Resigned",
+            "Death of Steve Jobs"
+        ]
+        
+        var ParrafoEvents=[
+            "Steve Jobs was born to Abdulfattah Jandali and Joanne Schieble. He was adopted as a young infant by Paul and Clara Jobs",
+            "In 1960, the Jobs family moved to Mountain View in Santa Clara County, California. Today, this is commonly called Silicon Valley.",
+            "In 1968, 13-year-old Steve Jobs got his first job, working at Hewlett-Packard in the summer after speaking directly to Bob Hewlett.",
+            "At 14, Jobs met Steve Wozniak. Wozniak was five years older, but the two shared a love for electronics.",
+            "Jobs and Wozniak build and sell illegal blue boxes, allowing users to make telephone calls for free.",
+            "Jobs enrolled at Reed College, but dropped out after a semester. He moved to a hippie commune after dropping out. Jobs later takes a job working for Atari.",
+            "In 1976, Wozniak and Jobs show the first board for the Apple I at the Homebrew Computer Club. On April 1, Jobs, Wozniak and Ron Wayne incorporate as Apple Computer.",
+            "From a humble beginning in Jobs' garage, Apple Computer is continuing to grow. They show the Apple II at the West Coast Computer Fair.",
+            "Apple Computer entered the stock market in 1980, making Jobs, already successful, remarkably wealthy.",
+            "In January 1984, Macintosh was introduced at the Apple Shareholders meeting.",
+            "After a coup at Apple that stripped Jobs of executive responsibility, he, along with some other individuals from Apple, founded NeXT.",
+            "Jobs purchased the computer animation division of George Lucas' ILM and incorporates it as Pixar.",
+            "As NeXT and Pixar grew, Jobs was named entrepreneur of the decade by Inc. Magazine.",
+            "In May 1991, Pixar, now solely devoted to animation with no remaining hardware production, signed to produce a feature length film with Disney. The feature film, released several years later, is Toy Story. After the release of Toy Story, Pixar goes public, making Jobs a billionaire.",
+            "In December 1996, Apple purchased the NeXT operating system and brought Jobs back onboard as an advisor. He returns to his former role as CEO in July 1997.",
+            "The now successful Apple released the first iPod in 2001. Jobs had no idea how much it would change the company or technology.",
+            "In the fall of 2003, Jobs was diagnosed with pancreatic cancer, but refused traditional medical treatments in favor of alternative therapies. He finally opts for surgery in August 2004.",
+            "In January 2007, Jobs introduced the item most closely associated with Apple today: the iPhone. The iPhone 3G followed in 2008.",
+            "After taking a medical leave of absence, Jobs, only weeks from death, had a liver transplant.",
+            "In 2010, Jobs announced the release of the first tablet, the iPad, and an improved iPhone, the iPhone 4.",
+            "On August 24, 2011, Jobs resigned from Apple, handing the reigns to Tim Cook. His health had worsened.",
+            "Steve Jobs died at home on October 5, 2011, surrounded by his family."
+        ]
+
+        function getDataFromList() {
+            let list = document.getElementById("list-event");
+            items = list.getElementsByTagName("li");
+            classActive=list.getElementsByClassName("active");
+            spanClass = list.getElementsByTagName("span");
+            
+
+            for (let i=0; i<items.length; ++i) {
+                clase=items[i].className;
+                if(clase=="active"){
+                    lastPoint=i;
+                } 
+             }
+            let m=0;
+            while (items.length>m){
+                if(items[m].className=="active"){
+                    firstPoint=m;
+                    break;
+                }
+                m=m+1;
+            } 
+           
+           
+        }
+        
+        function passLine(){
+            let imagenPrevius=document.getElementById("IMGprevius");
+            let imagenNext=document.getElementById("IMGnext");
+            
+            // console.log(firstPoint)
+            // console.log(lastPoint)
+
+            if (firstPoint==0){
+                imagenPrevius.src="img/NOprevius.png"
+                imagenPrevius.style.pointerEvents= "none";
+                
+            }else{
+                imagenPrevius.src="img/previus.png";
+                imagenPrevius.style.cursor="pointer";
+                imagenPrevius.style.pointerEvents="auto";
+            }
+
+            if(lastPoint==(items.length-1)){
+                imagenNext.src="img/NOnext.png";
+                imagenNext.style.pointerEvents= "none";
+            }else{
+                imagenNext.src="img/next.png";
+                imagenNext.style.cursor="pointer";
+                imagenNext.style.pointerEvents="auto";
+            }
+            // for (let i=0; i<items.length; ++i) {
+            //     console.log(i,items[i]);
+            // }
+        }
+
+        function nextLine(){
+            
+            getDataFromList();
+           
+            document.getElementById("color").style.width="0%";
+            let i=0;
+            if(firstPoint==7){
+                while(i<9){
+                    items[firstPoint+(i-2)].className="NoAct";
+                    items[lastPoint+i].className="active";
+                    i++;
+                }
+            }else{
+                while(i<7){
+                    items[firstPoint+i].className="NoAct";
+                    items[lastPoint+i+1].className="active";
+                    i++;
+                }
+            }
+
+            getDataFromList();
+            passLine();
+            lineFull();
+            // console.log("lista para adelante")
+            // console.log("primer punto",firstPoint)
+            // console.log("ultimo punto",lastPoint)
+            // for (let i=0; i<items.length; ++i) {
+            //     console.log(i,items[i]);
+            // }
+            
+        }
+        function previousLine(){
+            
+            getDataFromList();
+            
+            let i=0;
+            let m=0;
+            if(lastPoint==(items.length-1)){
+                while(i<8){
+                    items[lastPoint-i].className="NoAct";
+                    i++;
+                }
+                while(m<7){
+                    items[firstPoint-(m+1)].className="active";
+                    m++;
+                }
+
+            }else{
+                while(i<7){
+                    items[firstPoint-(i+1)].className="active";
+                    items[lastPoint-i].className="NoAct";
+                    i++;
+                }
+            }
+            // console.log("lista para atras");
+            // console.log("primer punto",firstPoint)
+            // console.log("ultimo punto",lastPoint)
+            // for (let i=0; i<items.length; ++i) {
+            //     console.log(i,items[i]);
+            // }
+            getDataFromList();
+            passLine();
+            lineFull();
+        }
+
+        function lineFull(){
+            let lastPointSelected;
+            let list = document.getElementById("list-event");
+            spanClass = list.getElementsByTagName("span");
+            for (let x=0; x < items.length; x++){  
+                let Span = spanClass[x].className;              
+                if(Span=="point selected"){
+                    lastPointSelected=x;
+                }
+            }
+            let lastPointClass=spanClass[lastPointSelected].parentNode;
+            let positionSpan=spanClass[lastPointSelected].getBoundingClientRect();
+            let positionDiv=document.getElementById("line").getBoundingClientRect();
+            
+            let array= Array.from(items);
+            let indexPoint=array.indexOf(lastPointClass);
+
+            if(indexPoint>lastPoint & lastPointClass.className=="active"){
+                document.getElementById("color").style.width="100%";
+            }else if(indexPoint>lastPoint & lastPointClass.className=="NoAct"){
+                document.getElementById("color").style.width="100%";
+            }else if(indexPoint<lastPoint & lastPointClass.className=="active"){
+                document.getElementById("color").style.width=(positionSpan.x-positionDiv.x)+'px';
+            }else if(indexPoint==lastPoint){
+                document.getElementById("color").style.width="100%";
+            }
+        }
+
+        function EventSelected(id){
+            let list = document.getElementById("list-event");
+            spanClass = list.getElementsByTagName("span");
+            for (let i=0; i<spanClass.length; ++i) {
+                spanClass[i].className="point";
+            }
+            for (let i=0; i<id; ++i) {
+                spanClass[i].className="point selected";
+            }
+            id=id-1;
+            document.getElementById("time-info").className="disabled";
+            // console.log(document.getElementById("time-info").className)
+            
+            document.getElementById("time-info").innerHTML="<h1>"+TitleEvents[id]+"</h1><p>"+ParrafoEvents[id]+"</p>";
+            // console.log(document.getElementById("time-info").className)
+            let positionSpan=spanClass[id].getBoundingClientRect();
+            let positionDiv=document.getElementById("line").getBoundingClientRect();
+            if((id-1)==lastPoint){
+                document.getElementById("color").style.width="100%";
+            }else{
+                document.getElementById("color").style.width=(positionSpan.x-positionDiv.x)+'px';
+            }    
+            document.getElementById("time-info").className="enabled";        
+        }
+    </script>
+</head>
+<body>
+    <main id="main">
+        <div class="imageContainer">
+            <div class="titleContainer">
+                <h1 id="title">Steve Paul Jobs</h1>
+                <p>Father of the first personal computer and founder of Apple Computer</p>
+            </div>
+            <figure id="img-div">
+                <img id="image" src="img/SteveJobs.jpg" alt="steve jobs under the ibm logo giving the finger">
+                <figcaption id="img-caption">"Steve Jobs showing his most rebellious spirit, giving the finger to an IBM poster, a few weeks before the launching his first Macintosh."</figcaption>
+            </figure>
+        </div>
+        <section id="tribute-info">
+            <div id="timeline">
+                    <ul id="list-event">
+                        <li class="active"><span class="point selected" onclick="EventSelected(1)"></span><a class="event1">Feb 24, 1955</a></li>
+                        <li class="active"><span class="point" onclick="EventSelected(2)"></span><a class="event2"></a>1960</a></li>
+                        <li class="active"><span class="point" onclick="EventSelected(3)"></span><a class="event3">1968</a></li>
+                        <li class="active"><span class="point" onclick="EventSelected(4)"></span><a class="event4">1969</a></li>
+                        <li class="active"><span class="point" onclick="EventSelected(5)"></span><a class="event5">1972</a></li>
+                        <li class="active"><span class="point" onclick="EventSelected(6)"></span><a  class="event6">1973</a></li>
+                        <li class="active"><span class="point" onclick="EventSelected(7)"></span><a  class="event7">March 1976</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(8)"></span><a  class="event8">April 17, 1977</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(9)"></span><a  class="event9">December 12, 1980</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(10)"></span><a  class="event10">January 24, 1984</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(11)"></span><a  class="event11">September 17, 1985</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(12)"></span><a  class="event12">January 30, 1986</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(13)"></span><a  class="event13">April 1989</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(14)"></span><a  class="event14">May 1991</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(15)"></span><a  class="event15">December 1996</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(16)"></span><a  class="event16">October 23, 2001</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(17)"></span><a  class="event17">2003</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(18)"></span><a  class="event18">January 9, 2009</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(19)"></span><a  class="event19">April 2009</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(20)"></span><a  class="event20">2010</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(21)"></span><a  class="event21">August 24, 2011</a></li>
+                        <li class="NoAct"><span class="point" onclick="EventSelected(22)"></span><a  class="event22">October 5, 2011</a></li>
+                    </ul>
+                    <div class="time-line-content">
+                        <div class="previous"><img id="IMGprevius" src="img/NOprevius.png" alt="previus line" width="40px" height="40px" onclick="previousLine()" ></div>
+                        <div class="line" id="line"><div id="color"></div></div>
+                        <div class="next"><img id="IMGnext" src="img/next.png" alt="next line" width="40px" height="40px" onclick="nextLine()"></div>
+                    </div>
+            </div>
+            <div id="time-info">
+                <h1>Steve Jobs' Birth</h1>
+                <p>Steve Jobs was born to Abdulfattah Jandali and Joanne Schieble. He was adopted as a young infant by Paul and Clara Jobs</p>
+            </div>
+            <div class="more-info">
+                <blockquote cite="https://www.elobservador.com.uy/nota/una-frase-que-dejo-el-cofundador-de-apple-para-motivar-tu-lunes-201921191530">
+                    <p>Your work is going to fill a large part of your life, the only way to be truly satisfied is to do what you think is great work and the only way to do it is to love what you do. If you haven't found it yet, keep looking. As with everything that has to do with the heart, you will know it when you have found it.</p>
+                    <cite>Steve Jobs</cite>
+                </blockquote>
+                <p>To learn more about his life, I recommend you visit: <a href="https://www.applesfera.com/curiosidades/siete-secretos-productividad-steve-jobs-que-aplicaba-su-dia-a-dia" target="_blank">Steve Jobs's seven productivity secrets that he applied in his day-to-day life.</a></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
