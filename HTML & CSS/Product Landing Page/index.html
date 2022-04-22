@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Ficon.png" type="image/png" />
+    <script src="jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Product Landing Page</title>
+</head>
+<body>
+    <header id="header">
+            <nav id="nav-bar">
+                <ul class="menu">
+                    <li class="logo" id="logoImg" ><a href="#"><img id="header-img" src="img/Logo-SB-C2.png" alt="company logo"></a></li>
+                    <li class="item"><a class="nav-link" href="#services">Information</a></li>
+                    <li class="item"><a class="nav-link" href="#form-section">Service</a></li>
+                    <li class="item"><a class="nav-link" href="#work">How it works</a></li>
+                    <li class="toggle"><a href="#"><img class='fas fa-bars' src='img/menuBarras.png' width='80px' height='40px' style="transition: all 1s ease-in;"></a></li>
+                </ul>
+            </nav>
+    </header>
+    <!-- <a name="information"></a> -->
+    <section id="services">
+        <h1 style="padding:2em;display: flex;justify-content: space-around;width: 100%;">We are here to advise you</h1>
+        <div class="textServices">
+            <p>We know that doubts always arise:</p>
+            <ul>
+                <li>What wood do I use?</li>
+                <li>How do I distribute my ladder?</li>
+                <li>Which door would be better?</li>
+                <li>What color do I paint the roof deck?</li>
+                <li>Windows with blinds or shutters?</li>
+            </ul>
+            <p style="line-height:1.35rem;">That is why at SAGREB CARPINTERIA we guide the client from the beginning, studying their needs and always opting for the option that best suits their project, always combining quality and efficiency to achieve an optimal final result. In addition, we work together with architecture and engineering studios to always achieve results in accordance with the technical and aesthetic demands of the project.</p>
+        </div>
+        <div><img src="img/asesoramiento.jpg" width="350em" height="350em" style="border-radius: 3px;box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.10);"></div>
+    </section>
+    <!-- <a name="emailForm"></a> -->
+    <section id="form-section">
+        <h1 style="padding:2em;display: flex;justify-content: space-around;width: 100%;">Contact with us for our services</h1>
+        <div class="form-container">
+            <p>For more information, leave us your email and we will contact you</p>
+            <form id="form" action="https://www.freecodecamp.org/email-submit">
+                <input type="email" id="email" name="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" placeholder="Enter your email here">
+                <button type="submit" id="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+    <!-- <a name="work"></a> -->
+    <section id="work">
+        <h1 style="padding:2em;display: flex;justify-content: space-around;width: 100%;">How we work</h1>
+        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/9zp90mWxQ-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+    <footer>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <span>Copyright 2022, Sagreb SL</span>
+    </footer>
+</body>
+</html>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
