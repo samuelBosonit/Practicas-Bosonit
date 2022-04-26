@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="style.css" />
+    <script src="jquery-3.6.0.js"></script>
+    <title>Technical Documentation Page</title>
+    <script type="text/javascript">   
+        function onloadFunction(){
+            const sections = document.querySelectorAll("section");
+            const nav = document.querySelector("nav");
+            const navList= document.querySelectorAll(".nav-list li");
+            const options ={
+                rootMargin:"-30% -350px -70% 0px"
+            };
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if(e.isIntersecting){
+                        console.log(e.target.id)
+                        navList.forEach((link)=>{
+                            // console.log(link.classList)
+                            // console.log(link.lastChild)
+                            let span=link.lastChild;
+                            span.classList.remove("active");
+                            // link.style.backgroundColor="white";
+                            if(e.target.id===link.dataset.nav){
+                                span.classList.add("active");
+                                // link.style.backgroundColor="rgb(237, 237, 237)";
+                                // console.log(link.classList)
+                            }
+                        });
+                    }
+                
+                });
+            },options);
+
+            sections.forEach(section=>{
+                observer.observe(section);
+            });
+        }
+
+       
+        
+    </script>
+  </head>
+  <body onload="onloadFunction()">
+    <!-- <div id="prueba"></div> -->
+    <nav id="navbar">
+      <header>Documentation<img src="img/angular.png" width="180vw" height="100vw"></header>
+      <ul id="menu" class="nav-list">
+        <li data-nav="Introduction"><a class="nav-link" href="#Introduction">Introduction</a><span></span></li>
+        <li data-nav="Configure_the_local_environment"><a class="nav-link" href="#Configure_the_local_environment">Configure the local environment</a><span class=""></span></li>
+        <li data-nav="Prerequisites"><a class="nav-link" href="#Prerequisites">Prerequisites</a><span></span></li>
+        <li data-nav="Install_the_Angular_CLI"><a class="nav-link" href="#Install_the_Angular_CLI">Install the Angular CLI</a><span></span></li>
+        <li data-nav="Create_a_workspace"><a class="nav-link" href="#Create_a_workspace">Create a workspace</a><span></span></li>
+        <li data-nav="Run_the_app"><a class="nav-link" href="#Run_the_app">Run the app</a><span></span></li>
+        <li data-nav="Angular_workspace_configuration"><a class="nav-link" href="#Angular_workspace_configuration">Angular workspace configuration</a><span></span></li>
+        <li data-nav="Overall_JSON_structure"><a class="nav-link" href="#Overall_JSON_structure">Overall JSON structure</a><span></span></li>
+        <li data-nav="Project_configuration_options"><a class="nav-link" href="#Project_configuration_options">Project configuration options</a><span></span></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>
+            Angular is an open source framework developed by Google to
+            facilitate the creation and programming of single page web
+            applications, the SPA (Single Page Application ) websites.
+          </p>
+
+          <p>
+            Angular completely separates the frontend and backend in the
+            application, avoids writing repetitive code and keeps everything
+            more organized thanks to its MVC (Model-View-Controller) pattern,
+            ensuring rapid development, while allowing modifications and
+            updates.
+          </p>
+
+          <p>
+            In a SPA website, although the loading speed can be a bit slow the
+            first time it is opened, browsing afterwards is totally
+            instantaneous, since the entire page has been loaded at once.
+          </p>
+
+          <p>
+            It is only a route that has to be sent to the server, and what
+            Angular does 'underneath' is to change the view when browsing so
+            that it gives the appearance of a normal web, but in a more dynamic
+            way.
+          </p>
+
+          <p>
+            Among other advantages, this framework is modular and scalable,
+            adapting to our needs and being based on the web component standard,
+            and with a set of application programming interfaces (API) it allows
+            us to create new custom HTML tags that can be reused.
+          </p>
+
+          <p>
+            The main programming language of Angular is Typescript , and thus
+            all the syntax and the way of doing things in the code is the same,
+            which adds coherence and consistency to the information, allowing
+            for example, the incorporation of new programmers, in if necessary,
+            since they can continue their work without undue difficulty.
+          </p>
+
+          <p>
+            As already indicated, Angular templates store the user interface
+            code (front-end) and the business logic code (back-end) separately,
+            which, among other benefits, allows better use of other previously
+            existing tools.
+          </p>
+
+          <p>
+            And as if that were not enough, the main editors and integrated
+            development environments (IDEs) already offer extensions to be able
+            to work with this framework more comfortably.
+          </p>
+
+          <p>
+            Due to its reactive programming, the view is automatically updated
+            after changes are made. In addition, Angular has a command line
+            wizard to be able to create base projects and it also integrates
+            well with testing tools and with Ionic , which facilitates the
+            creation of web-responsive, that is, adapted to mobiles.
+          </p>
+
+          <p>
+            This aspect is becoming more important every day both due to the
+            growing use of these devices to access the internet and due to the
+            penalization that Google makes of those pages that do not facilitate
+            their visit on any device.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Configure_the_local_environment">
+        <header>Configure the local environment</header>
+        <article>
+          <p>
+            This guide explains how to set up your environment for Angular
+            development using the Angular CLI Tool . It includes information
+            about prerequisites, installing the CLI, creating an initial
+            workspace and startup application, and running that application
+            locally to verify its configuration.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Prerequisites">
+        <header>Prerequisites</header>
+        <article>
+          <p>
+            To use the Angular framework, you must be familiar with the
+            following:
+          </p>
+          <ul>
+            <li>javascript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+          <p>Knowledge of TypeScript is helpful, but not required.</p>
+          <p>
+            To install Angular on your local system, you need the following:
+          </p>
+          <ul>
+            <li>
+              Node.js
+              <p>
+                Angular requires a current, active LTS, or maintenance LTS
+                version of Node.js.
+              </p>
+            </li>
+            <li>
+              npm package manager
+              <p>
+                Angular, Angular CLI, and Angular applications depend on npm
+                packages for many features and functions. To download and
+                install npm packages, you need an npm package manager. This
+                guide uses the npm client command line interface , which is
+                installed Node.jsby default. To check that you have the npm
+                client installed, run npm -vin a terminal.
+              </p>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Install_the_Angular_CLI">
+        <header>Install the Angular CLI</header>
+        <article>
+          <p>
+            You'll use the Angular CLI to create projects, generate application
+            and library code, and perform a variety of development tasks, such
+            as testing, bundling, and deployment.
+          </p>
+
+          <p>
+            To install Angular CLI, open a terminal and run the following
+            command:
+          </p>
+          <code> install -g @angular/cli</code>
+        </article>
+      </section>
+      <section class="main-section" id="Create_a_workspace">
+        <header>Create a workspace</header>
+        <article>
+          <p>
+            You develop applications in the context of an Angular workspace .
+          </p>
+
+          <p>To create a new workspace and starter app:</p>
+          <ul>
+            <li>
+              Run the CLI command ng newand provide the name my-app, as shown
+              here:
+              <code>ng new my-app</code>
+            </li>
+            <li>
+              The command ng newwill prompt you for information about the
+              features to include in the initial application. Accept the default
+              values by pressing the Enter or Return key.
+            </li>
+          </ul>
+          <p>
+            The Angular CLI installs the necessary Angular npm packages and
+            other dependencies. This may take a few minutes.
+          </p>
+          <p>
+            The CLI creates a new workspace and a simple welcome application,
+            ready to run.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Run_the_app">
+        <header>Run the app</header>
+        <article>
+          <p>
+            Angular's CLI includes a server, so you can build and serve your
+            application locally.
+          </p>
+          <ul>
+            <li>Navigate to the workspace folder, such as my-app.</li>
+            <li>
+              Run the following command:
+              <code
+                >cd my-app<br />
+                ng serve --open</code
+              >
+            </li>
+          </ul>
+          <p>
+            The command ng servestarts the server, looks at your files, and
+            rebuilds the application as you make changes to those files.
+          </p>
+          <p>
+            The option --open(or just -o) automatically opens your browser in
+            http://localhost:4200/.
+          </p>
+          <p>
+            If your installation and configuration was successful, you should
+            see a page similar to the following.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Angular_workspace_configuration">
+        <header>Angular workspace configuration</header>
+        <article>
+          <p>
+            A file named angular.json at the root level of an Angular workspace
+            provides workspace-wide and project-specific configuration defaults
+            for build and development tools provided by the Angular CLI. Path
+            values given in the configuration are relative to the root workspace
+            folder.
+          </p>
+        </article>
+      </section>
+      <section class="main-section" id="Overall_JSON_structure">
+        <header>Overall JSON structure</header>
+        <article>
+          <p>
+            At the top level of angular.json, a few properties configure the
+            workspace, and a projects section contains the remaining per-project
+            configuration options. CLI defaults set at the workspace level can
+            be overridden by defaults set at the project level, and defaults set
+            at the project level can be overridden on the command line.
+          </p>
+          <p>
+            The following properties, at the top level of the file, configure
+            the workspace.
+          </p>
+          <ul>
+            <li>version: The configuration-file version.</li>
+            <li>
+              newProjectRoot: Path where new projects are created. Absolute or
+              relative to the workspace folder.
+            </li>
+            <li>
+              defaultProject: Default project name to use in commands, where not
+              provided as an argument. When you use ng new to create a new app
+              in a new workspace, that app is the default project for the
+              workspace until you change it here.
+            </li>
+            <li>
+              schematics : A set of schematics that customize the ng generate
+              sub-command option defaults for this workspace. See Generation
+              schematics below.
+            </li>
+            <li>
+              projects : Contains a subsection for each project (library or
+              application) in the workspace, with the per-project configuration
+              options.
+            </li>
+          </ul>
+          <p>
+            The initial app that you create with ng new app_name is listed under
+            "projects":
+          </p>
+          <code>"projects": { "app_name": { ... } ... }</code>
+        </article>
+      </section>
+      <section class="main-section" id="Project_configuration_options">
+        <header>Project configuration options</header>
+        <article>
+            <p>The following top-level configuration properties are available for each project, under projects:<project_name>.</p>
+            <code>"my-app": {
+                "root": "",
+                "sourceRoot": "src",
+                "projectType": "application",
+                "prefix": "app",
+                "schematics": {},
+                "architect": {}
+              }</code>
+                <table>
+                    <thead>
+                        <tr>
+                            <th align="left">PROPERTY</th>
+                            <th align="left">DESCRIPTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="left"><code>root</code></td>
+                            <td align="left">The root folder for this project's files, relative to the workspace folder. Empty for the initial app, which resides at the top level of the workspace.</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><code>sourceRoot</code></td>
+                            <td align="left">The root folder for this project's source files.</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><code>projectType</code></td>
+                            <td align="left">One of "application" or "library". An application can run independently in a browser, while a library cannot.</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><code>prefix</code></td>
+                            <td align="left">A string that Angular prepends to generated selectors. Can be customized to identify an app or feature area.</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><code>schematics</code></td>
+                            <td align="left">A set of schematics that customize the <code id="table-code">ng generate</code> sub-command option defaults for this project.</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><code>architect</code></td>
+                            <td align="left">Configuration defaults for Architect builder targets for this project.</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </article>
+    </main>
+  </body>
+</html>

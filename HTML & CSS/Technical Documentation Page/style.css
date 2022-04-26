@@ -1,0 +1,187 @@
+#navbar {
+    position: fixed;
+    min-width: 290px;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    height: 100%;
+    box-shadow: 4px 1px 10px -3px rgba(0,0,0,0.77);
+}
+#navbar header{
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+    margin: 15px;
+}
+#navbar ul{
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 70%;
+}
+#navbar ul li{
+    width: 100%;
+}
+.nav-list li::before{
+    content:"";
+    width: 100%;
+    height: 5px;
+    background-color: aqua;
+    position: absolute;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+#navbar a {
+    display: block;
+    padding: 24px 30px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    color: #6e6e6e;
+}
+#navbar a:visited{
+    color: #6e6e6e;
+}
+#navbar li:hover a{
+    background-color:rgb(237, 237, 237);
+    color: #1976d2;
+}
+#main-doc{
+    position: absolute;
+    margin-left: 310px;
+    padding: 20px;
+    margin-bottom: 110px;
+}
+.main-section{
+    padding: 20px 10px 20px;
+    height: auto;
+    /* border: 1px solid blue; */
+    margin-bottom: 20px;
+}
+.main-section header{
+    font-size:1.5rem;
+    font-weight: bold;
+}
+.main-section ul{
+    margin-left: 10px;
+}
+.main-section ul li{
+    margin: 15px 0 15px;
+}
+.main-section code{
+    display: block;
+    text-align: left;
+    white-space: pre-line;
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 2;
+    background-color: #f7f7f7;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+table {
+    margin: 24px 0;
+    box-shadow: 0 2px 2px rgb(10 16 20 / 24%), 0 0 2px rgb(10 16 20 / 12%);
+    border-radius: 2px;
+    background: #fff;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+}
+table thead>tr>th {
+    background: rgba(130, 130, 130, 0.2);
+    border-bottom: 1px solid #dbdbdb;
+    color: #444;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 24px;
+    text-align: left;
+    text-transform: uppercase;
+    line-height: 28px;
+    line-height: 2.8rem;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+}
+table tbody>tr>td, table tbody>tr>th{
+    border-bottom: 1px solid #dbdbdb;
+    padding: 16px;
+    text-align: left;
+    line-height: 2.5rem;
+}
+td {
+    padding: 10px 25px;
+}
+#table-code{
+    display: inline;
+    text-align: left;
+    white-space:normal;
+    background-color: #ffffff;
+    margin: 2px;
+    padding: 0px;
+}
+span{
+    transition: transform 0.5s ease;
+    transform: scaleX(0);
+    display:flex;
+}
+.active{
+    width: 70%;
+    height: 5px;
+    background-color:crimson;
+    transform: scaleX(1);
+    margin-left: 15%;
+    /* bottom:-10px; */
+}
+section[id]{
+    scroll-margin-top: 70px;
+}
+html{
+    scroll-behavior: smooth;
+}
+#prueba{
+    top: 30%;
+    left: 350px;
+    right: 0px;
+    bottom: 70%;
+    position: fixed;
+    border: 2px solid red;
+}
+@media only screen and (max-width: 900px) {
+    #navbar {
+        background-color: white;
+        position: absolute;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 395px;
+        z-index: 1;
+    }
+    #navbar header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        font-size: 2rem;
+    }
+    #navbar ul{
+        max-height: 207px;
+        width: 100%;
+        padding-bottom: 10px;
+    }
+    #main-doc{
+        position: relative;
+        margin-left: 0px;
+        margin-top: 420px;
+    }
+}
