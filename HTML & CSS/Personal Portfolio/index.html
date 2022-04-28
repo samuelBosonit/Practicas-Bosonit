@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/ico.webp" type="image/png" />
+    <link rel="stylesheet" href="style.css">
+    <title>Personal Portfolio</title>
+    <script type="text/javascript">
+
+        function rotacionActiva(id,out){
+            const listIcon=document.querySelectorAll(".iconList .imgFooter")
+            const listEnlace=document.querySelectorAll(".iconList .title-icon")
+                    if(out==false){
+                        listIcon[id].classList.remove("active");
+                        listEnlace[id].classList.remove("active");
+                    }else{
+                        listIcon[id].classList.add("active");
+                        // console.log(listEnlace[id].classList)
+                        listEnlace[id].classList.add("active");
+                    }
+        }
+
+        function onloadFunction(){
+            const sections = document.querySelectorAll("section");
+            const nav = document.querySelector("nav");
+            const navList= document.querySelectorAll(".nav-list li");
+            const options ={
+                threshold:"0.4",
+            };
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if(e.isIntersecting){
+                        // console.log(e.target.id)
+                        if(e.target.id!=="welcome-section"){
+                            nav.classList.add("active")
+                        }else{
+                            nav.classList.remove("active");
+                        }
+                        navList.forEach((link)=>{
+                            // console.log(link.classList)
+                            // console.log(link.lastChild)
+                            // console.log(link.dataset.nav)
+                            // console.log(e.target.id)
+                            let firstLi=document.getElementById("first");
+                            let a=link.lastChild;
+                            a.classList.remove("active");
+                            link.classList.remove("active")
+                            firstLi.style.backgroundColor="transparent";
+                            firstLi.lastChild.classList
+                            if(e.target.id===link.dataset.nav){
+                                a.classList.add("active");
+                                link.classList.add("active");
+                                // console.log(link.classList)
+                            }else if(e.target.id=="welcome-section"){
+                                firstLi.style.backgroundColor="#3A1C71";
+                                firstLi.lastChild.classList.add("active");
+                            }
+                        });
+                    }
+                
+                });
+            },options);
+
+            sections.forEach(section=>{
+                observer.observe(section);
+            });
+        }
+    </script>
+</head>
+<body onload="onloadFunction()">
+    <nav id="navbar">
+        <ul class="nav-list">
+            <li data-nav="welcome-Section" id="first"><a href="#welcome-section">Welcome</a></li>
+            <li data-nav="projects"><a href="#projects">Projects</a></li>
+            <li data-nav="contact"><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+        <section id="welcome-section">
+            <h1>Hey I am Samuel</h1>
+            <p>a web developer</p>
+        </section>
+        <section id="projects">
+            <h1>These are some of my projects</h1>
+            <div class="projects-flex">
+                 <div class="project-tile"><div class="img-container"><img src="img/imagen1.jpg" alt=""></div><div class="container-enlace"><span><</span><a href="">Survey Form</a><span>/></span></div></div>
+                <div class="project-tile"><div class="img-container"><img src="img/imagen2.jpg" alt=""></div><div class="container-enlace"><span><</span><a href="">Technical Documentation</a><span>/></span></div></div>
+                <div class="project-tile"><div class="img-container"><img src="img/imagen3.jpg" alt=""></div><div class="container-enlace"><span><</span><a href="">Tribute Page</a><span>/></span></div></div>
+                <div class="project-tile"><div class="img-container"><img src="img/imagen4.jpg" alt=""></div><div class="container-enlace"><span><</span><a href="">Product Landing Page</a><span>/></span></div></div>
+            </div>
+            <button type="submit" action="">Show All ></button>
+        </section>
+        <section id="contact">
+            <h1>Let's work together...</h1>
+            <p>You can follow me...</p>
+            <div class="iconList" style="position:absolute;margin-top:250px;float:none">
+                <a id="profile-link" href="https://github.com/samuelBosonit" target="_blank" class="icon" onmouseover="rotacionActiva(0)" onmouseout="rotacionActiva(0,false)"><img id="gitHubF" class="imgFooter" src="img/github.png"><span class="title-icon">GitHub</span></a>
+                <a class="icon" onmouseover="rotacionActiva(1)" onmouseout="rotacionActiva(1,false)"><img id="instagramF" class="imgFooter" src="img/instagramF.png"><span class="title-icon">Instagram</span></a>
+                <a class="icon" onmouseover="rotacionActiva(2)" onmouseout="rotacionActiva(2,false)"><img id="facebookF" class="imgFooter" src="img/facebookF.png"><span class="title-icon">Facebook</span></a>
+                <a class="icon" onmouseover="rotacionActiva(3)" onmouseout="rotacionActiva(3,false)"><img id="googleF" class="imgFooter" src="img/googleF.png"><span class="title-icon">Google+</span></a>
+                <a class="icon" onmouseover="rotacionActiva(4)" onmouseout="rotacionActiva(4,false)"><img id="twitterF" class="imgFooter" src="img/twitterF.png"><span class="title-icon">Twitter</span></a>
+                <a class="icon" onmouseover="rotacionActiva(5)" onmouseout="rotacionActiva(5,false)"><img id="whatsappF" class="imgFooter" src="img/whatsappF.png"><span class="title-icon">Whatsapp</span></a>
+            </div>
+        </section>
+    
+</body>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</html>
