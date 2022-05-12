@@ -1,0 +1,196 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+main{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: linear-gradient(to right, #abbaab, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+/* #red{
+    background: rgb(202, 66, 66);
+    box-shadow: 0px 0px 23px 8px #ff0000;
+    opacity: 0.8;
+}
+#yellow{
+    background: rgb(169, 171, 66);
+    opacity: 0.8;
+}
+#green{
+    background: linear-gradient( -90deg, #229206 0%, #1b4d00 100%);
+    opacity: 0.8;
+} */
+.circulo.circle-red{
+    background: rgb(255, 0, 0);
+    box-shadow: 0px 0px 23px 8px #ff0000;
+    opacity: 1;
+}
+.circulo.circle-yellow{
+    background: rgb(255, 183, 0);
+    box-shadow: 0px 0px 23px 8px #eaff00;
+    opacity: 1;
+}
+.circulo.circle-green{
+    background: linear-gradient( -90deg, #229206 0%, #1b4d00 100%);
+    box-shadow: 0px 0px 23px 8px #008b0c;
+    opacity:1;
+}
+.button.button-red{
+    background: rgb(255, 0, 0);
+    /* box-shadow: 0px 0px 23px 8px #ff0000; */
+    opacity: 1;
+}
+.button.button-yellow{
+    background: rgb(255, 183, 0);
+    /* box-shadow: 0px 0px 23px 8px #eaff00; */
+    opacity: 1;
+}
+.button.button-green{
+    background: linear-gradient( -90deg, #229206 0%, #1b4d00 100%);
+    /* box-shadow: 0px 0px 23px 8px #008b0c; */
+    opacity:1;
+}
+.circulo-container{
+    position: absolute;
+    display: block;
+    left: 21.3em;
+    top: 5.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+}
+.circulo{
+    width: 4.3em;
+    height: 4.3em;
+    border: 2px solid;
+    border-radius:50%;
+    box-shadow: 0px 0px 23px 8px #464646;
+    transition: all .8s;
+    background:linear-gradient( -90deg, #393939 0%, #000000 100%)
+}
+.circulo::after{
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-right: 4px solid rgb(255, 255,255,0.6);
+    margin-top: 2%;
+}
+.semaforo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+/* switch */
+.input-container{
+    padding: 5em 2em;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.switch-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+:root {
+    --switch-width: 50px;
+    --switch-height: 30px;
+    --circle-size: 22px;
+    --circle-padding: 3px;
+    --circle-bg: #fff;
+    --circle-on-bg: #fff;
+    --switch-bg: #c9c9c9;
+    --switch-on-bg: #3489de;
+}
+.switch {
+    width: var(--switch-width);
+    height: var(--switch-height);
+    border-radius: 100px;
+    cursor: pointer;
+    background: var(--switch-bg);
+    display: flex;
+    position: relative;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.switch::before {
+    content: "";
+    display: block;
+    background: var(--circle-bg);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    left: var(--circle-padding);
+}
+
+.switch-input {
+    display: none;
+}
+
+.switch-input:checked + .switch {
+    background: var(--switch-on-bg);
+}
+
+.switch-input:checked + .switch::before {
+    background: var(--circle-on-bg);
+    left: calc(
+        (var(--switch-width) - var(--circle-size)) - var(--circle-padding)
+    );
+}
+/* container-text */
+.container-control{
+    height: auto;
+    width: 100%;
+    border-radius: 5px;
+    padding: .3em;
+    /* text-align: center; */
+    display:flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+
+.input-container h2{
+    margin: 1em 0 0.5em;
+}
+.button{
+    width:6em;
+    border: 1px solid;
+    padding: 1em;
+    border-radius:30%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+/* #red{
+    background: red;
+}
+#yellow{
+    background: yellow;
+}
+#green{
+    background:green;
+} */
+.pointer{
+    width:60px;
+    height:60px;
+    padding: 10px;
+    display: none;
+}
+.pointer.visible{
+    display: block;
+}
